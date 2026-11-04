@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 05 · Python loops</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="loops"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>You know how to skip and stop</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>for letter in &quot;abxc&quot;:
+    if letter == &quot;b&quot;:
+        continue
+    if letter == &quot;x&quot;:
+        break
+    print(letter)</pre></div><p class="plain-note">Predict the output.<br>Explain your trace.</p></div><p class="foot">R · 8 minutes. Use practice R, then change the text and predict again.</p></section>
+<section id="while"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>while checks the condition again</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>seconds = 3
+while seconds &gt; 0:
+    print(seconds)
+    seconds -= 1
+print(&quot;Go!&quot;)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>3
+2
+1
+Go!</pre></div></div></div><p class="foot">New today: while. Trace the condition, body, update and next test. Run W2; compare with for.</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A value can increase too</h2><div class="task-row"><strong>A</strong><div><p>Charge from 40 to 100.<br>Which condition should keep it going?</p><a href="practice.ipynb">Open A · 14 minutes</a></div></div><p class="foot">Practice A / charge.py. Compare an increasing charge with a decreasing countdown.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Repair the countdown</h2><div class="try-code">seconds = 4<br>while seconds &lt; 0:</div><div class="task-row"><strong>B</strong><div><p>Why does the starter skip the loop?</p><a href="practice.ipynb">Open B · 16 minutes</a></div></div><p class="foot">Full task: practice B. Stop a stuck loop with Interrupt Kernel or Ctrl+C.</p></section>
+<section id="repeat"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Ask again until ready</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>while True:
+    answer = input(&quot;Type ready: &quot;)
+    if answer == &quot;ready&quot;:
+        print(&quot;Starting&quot;)
+        break
+    print(&quot;Try again&quot;)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>wait → Try again
+ready → Starting</pre></div></div></div><p class="foot">Run W4, then D. Read input inside the loop: each turn needs a new reply.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Keep asking until yes or no</h2><div class="task-row"><strong>D</strong><div><p>An invalid reply should ask again.<br>A valid reply should end the loop.</p><a href="practice.ipynb">Open D · 14 minutes</a></div></div><p class="foot">Practice D / reply.py. Start before the break; finish and test afterwards.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your code. Return at lesson minute 70.</p></section>
+<section id="skip-stop"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A skipped reply still needs fresh input</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>while True:
+    command = input(&quot;Command: &quot;)
+    if command == &quot;wait&quot;:
+        continue
+    if command == &quot;done&quot;:
+        break
+    print(&quot;Received:&quot;, command)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>Received: hello</pre></div></div></div><p class="foot">W3: enter wait, hello, done. Where must input be so continue can ask again?</p></section>
+<section id="practice-cd"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Stop, skip, or use the number</h2><div class="task-row"><strong>C</strong><div><p>Zero stops. Negatives are skipped.<br>Positive entries are doubled.</p><a href="practice.ipynb">Open C · 17 minutes</a></div></div><p class="foot">Practice C / numbers.py. Reuse break and continue in a while input loop.</p></section>
+<section id="random"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Pick a random number</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>import random
+roll = random.randint(1, 6)
+print(&quot;Roll:&quot;, roll)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>One possible roll:
+Roll: 4</pre></div></div></div><p class="foot">Both 1 and 6 are possible. For a game, pick the secret once before the loop.</p></section>
+<section id="game"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Build the guessing game</h2><div class="task-row"><strong>E</strong><div><p>Too low → Higher<br>Too high → Lower<br>Correct → show the attempt count and stop.</p><a href="practice.ipynb">Open E · 40 minutes</a></div></div><p class="foot">Practice E / guess.py. Build for 35 minutes, then use 5 minutes to test with a partner.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Run one final check</h2><div class="choices">Correct on the first guess?<br>Two wrong guesses, then correct?<br>Does the game stop?</div><p class="foot">Show your own program. Explain why its counter and break are in those places.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

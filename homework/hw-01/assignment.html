@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HW1 · Group Trip Budget Calculator · BDG</title><link rel="stylesheet" href="../../assets/site.css">
+</head><body><main><header><a href="../../index.html">BDG · Python &amp; AI</a></header>
+<article><h1 id="hw1-group-trip-budget-calculator">HW1 · Group Trip Budget Calculator</h1>
+<p><strong>Assigned after lesson 3; covers lessons 1–3.</strong> Release on Saturday after the required concepts have been taught. Due the following Saturday, one week later; your instructor confirms the clock time and where to send the link. This replaces the unassigned book-swap task. There is one first homework, not two.</p>
+<p><strong>Estimated work:</strong> 45–60 minutes, excluding installation/Git authentication problems. Plan, write, run a sample, investigate the prediction and document/submit. Record an unfinished step if you need help rather than spending the entire time reinstalling tools. No paid account is required.</p>
+<h2 id="the-program">The program</h2>
+<p>A group wants to understand a trip's shared costs. Write a Python script that asks for:</p>
+<ol>
+<li>Number of travelers.</li>
+<li>Number of nights.</li>
+<li>Accommodation cost per night <strong>for the whole group</strong>.</li>
+<li>Transport cost <strong>for the whole trip and whole group</strong>, entered once.</li>
+<li>Food budget <strong>per person per day</strong>.</li>
+</ol>
+<p>Use these assumptions: trip days = nights + 1; all monetary entries use the same currency; costs split equally. Inputs are valid positive numbers; travelers and nights are positive integers. The accommodation amount is not a per-person rate. Do not multiply the transport total by the number of travelers or days.</p>
+<p>Calculate and clearly label:</p>
+<ul>
+<li>Total accommodation cost.</li>
+<li>Total food cost.</li>
+<li>Total trip cost, including accommodation, transport and food.</li>
+<li>Cost per person.</li>
+</ul>
+<p>Choose your own wording, layout and meaningful variable names. Use only concepts taught through lesson 3: assignments, int/float conversion, input, arithmetic and ordinary print calls. No conditions, loops, functions, collections, imports, try/except, f-strings, round() or fixed currency formatting are required. Normal float output is accepted. You do not need to handle invalid input or travelers = 0 for this assignment.</p>
+<h2 id="one-complete-sample">One complete sample</h2>
+<p>User entries appear after prompts; your wording may differ.</p>
+<pre><code class="language-text">Travelers: 4
+Nights: 2
+Accommodation per night (whole group): 120
+Transport (whole trip, whole group): 80
+Food per person per day: 15
+Total accommodation: 240.0
+Total food: 180.0
+Total trip: 500.0
+Cost per person: 125.0
+</code></pre>
+<p>Check the sample by hand: 2 nights give 3 days; accommodation is 2 × 120 = 240; food is 4 × 3 × 15 = 180; total is 240 + 80 + 180 = 500; split among 4 gives 125. This is a test case, not a finished program. Your program must also calculate from different entries rather than print these sample answers.</p>
+<h2 id="predict-then-check">Predict, then check</h2>
+<p>Before running a second case, write your prediction:</p>
+<blockquote>
+<p>If the number of travelers doubles while all other inputs stay fixed, which costs change and which stay the same?</p>
+</blockquote>
+<p>Use the sample above, then change only travelers from 4 to 8. Run and record what happened to each of the four displayed costs. Explain any difference from your prediction; a changed prediction backed by a real check is useful evidence. The full answer is not supplied here.</p>
+<h2 id="files-and-submission">Files and submission</h2>
+<p>Use one GitHub repository named <strong>Homeworks</strong>. Your submitted snapshot must contain:</p>
+<pre><code class="language-text">Homeworks/
+└── HW1/
+    ├── main.py
+    └── README.md
+</code></pre>
+<p>The course assignment lives in homework/hw-01; that name is not your submission-folder name. Copy <code>starter/HW1</code> into the root of your own Homeworks repository and complete it. Keep your lesson-2 classroom repository separate. If a root .gitignore is useful, merge the supplied starter rules without removing your existing rules; it is not an extra graded file.</p>
+<p>In HW1/README.md include the verified root run command, one example run, your prediction and observed second-run result, and any AI assistance used (or “No AI assistance used”). Explain what you checked yourself. You may also note approximate work time and blockers for support.</p>
+<p>Run from the Homeworks repository root with <code>python3 HW1/main.py</code> (Windows usually <code>py HW1/main.py</code>). Save, run and inspect your work. Commit meaningful changes and push, then submit the <strong>exact final commit URL</strong>, such as <code>https://github.com/USERNAME/Homeworks/commit/FULL_SHA</code>. Compare with <code>git log -1 --format=%H</code> and check instructor access. No arbitrary number of commits is required. A repository homepage is not a fixed submission. Corrections use a new commit and a new link.</p>
+<p>See <a href="submission.html">submission.md</a> for the exact repository-specific workflow. Do not upload environments, keys or credentials. If remote access is blocked, keep your working files and record the exact non-secret failing step; ask for support and supply the missing remote evidence later.</p>
+<h2 id="assessment-10-points">Assessment · 10 points</h2>
+<table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th style="text-align:right">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inputs use appropriate numeric types and all four calculations are correct for different valid entries</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td>Names, labelled output and straight-line code are understandable</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>README reproduces a run, explains prediction versus observation and discloses AI assistance</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>Required folder/files and an accessible exact commit link identify the work</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Optional work is not needed for full marks. No points depend on untaught syntax, polished prose or two-decimal formatting.</p>
+<p><strong>Optional extension:</strong> ask for a souvenir budget per person and include it in total cost and cost per person. Keep all other assumptions. Explain what you tested after the change.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

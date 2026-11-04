@@ -1,0 +1,118 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 02 · Git workflow · BDG</title><link rel="stylesheet" href="../../assets/site.css">
+</head><body><main><header><a href="../../index.html">BDG · Python &amp; AI</a></header>
+<article><h1 id="lesson-02-git-workflow">Lesson 02 · Git workflow</h1>
+<p>Use these commands with your instructor, one checkpoint at a time. Replace <code>USERNAME</code>, <code>YOUR_NAME</code> and the email placeholder with your own values. Do not change another person's Git identity.</p>
+<h2 id="1-installation-and-identity">1 · Installation and identity</h2>
+<p>Ubuntu: <code>sudo apt install git</code>. Windows: install <a href="https://git-scm.com/download/win">Git for Windows</a>, then use Git Bash for the filesystem and SSH commands below.</p>
+<pre><code class="language-bash">git --version
+git config --global user.name &quot;YOUR_NAME&quot;
+git config --global user.email &quot;YOUR_EMAIL&quot;
+git config --global --get user.name
+git config --global --get user.email
+</code></pre>
+<p>Find your privacy/noreply address in GitHub Settings → Emails. Create a GitHub account and verify sign-in before practice. Git identity labels a commit's author; it is separate from authentication.</p>
+<h2 id="command-reading-guide">Command reading guide</h2>
+<p><code>cd</code> changes the current folder; <code>mkdir</code> creates one. <code>mkdir -p classwork/lesson-02</code> creates the nested classroom folders in Ubuntu or Git Bash; you can create the same folders in the editor instead. A slash separates folders in a path. Replace placeholders; do not type the prompt symbols shown by your terminal.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Question it answers / action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git status</td>
+<td>What is new, changed or staged here?</td>
+</tr>
+<tr>
+<td>git diff</td>
+<td>What saved changes have not been staged?</td>
+</tr>
+<tr>
+<td>git add PATH</td>
+<td>Select the current saved content at this path for the next snapshot.</td>
+</tr>
+<tr>
+<td>git diff --cached</td>
+<td>What changes would the next commit record?</td>
+</tr>
+<tr>
+<td>git commit -m &quot;message&quot;</td>
+<td>Record the staged snapshot locally, with a reason.</td>
+</tr>
+<tr>
+<td>git log --oneline</td>
+<td>Which commits exist in this local history?</td>
+</tr>
+</tbody>
+</table>
+<p>Saving does not stage a file. Staging does not commit it. Committing does not send it to GitHub. An empty normal diff can mean changes are staged; check status and the cached diff before concluding nothing changed.</p>
+<h2 id="2-local-repository-and-first-commit">2 · Local repository and first commit</h2>
+<p>Create your solution repository outside the instructor's course-material directory. If <code>python-course</code> already exists, do not initialize blindly; check <code>git status</code> and ask for help.</p>
+<pre><code class="language-bash">mkdir python-course
+cd python-course
+git init -b main
+mkdir -p classwork/lesson-02
+</code></pre>
+<p>Create <code>classwork/lesson-02/main.py</code> in your editor by copying your working lesson-1 invitation. If unfinished, use the taught workshop demonstration and say so in the README. Create <code>classwork/lesson-02/README.md</code> with the real run command and output, and copy the root <code>.gitignore</code> from starter-project, preserving any existing rules.</p>
+<pre><code class="language-bash">python3 classwork/lesson-02/main.py
+git status
+git add classwork/lesson-02/main.py classwork/lesson-02/README.md .gitignore
+git diff --cached
+git commit -m &quot;Add first Python script&quot;
+git log --oneline
+git branch --show-current
+</code></pre>
+<p>Windows: replace <code>python3</code> with <code>py</code>. Working tree means your current files; staging means the changes selected for the next snapshot; a commit records that snapshot. A branch is a movable name pointing to a commit. We use <code>main</code> now; branch creation, PRs and conflict practice return in lesson 21.</p>
+<h2 id="3-a-change-and-a-second-commit">3 · A change and a second commit</h2>
+<p>For G3, change the start time to 18:00, run the script, and update the README's expected output to match. In the investigation, stage main.py alone first; predict the next snapshot and then select the missing README change. The sequence below shows the complete selection:</p>
+<pre><code class="language-bash">git diff
+git add classwork/lesson-02/main.py classwork/lesson-02/README.md
+git diff --cached
+git commit -m &quot;Clarify script and run instructions&quot;
+git log --oneline
+git show --stat HEAD
+</code></pre>
+<p><code>git show --stat HEAD</code> lists files changed by the latest commit; HEAD names your current commit. To inspect its full changes, use <code>git show HEAD</code>. The two diffs preview uncommitted changes; show inspects a recorded commit.</p>
+<p>Before add, the change is unstaged. The cached diff shows what the next commit will record. Later corrections should be new commits.</p>
+<h2 id="4-ssh-authentication">4 · SSH authentication</h2>
+<p>Reuse an existing working SSH key where possible. List existing public-key filenames with <code>ls ~/.ssh/*.pub</code>. If a new key is needed, follow the <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">official GitHub guide</a>. For example:</p>
+<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;YOUR_GITHUB_NOREPLY_EMAIL&quot; -f ~/.ssh/bdg_course_ed25519
+</code></pre>
+<p>If that filename already exists, do not overwrite it. Use the existing key or choose a new filename. Set a passphrase. In Ubuntu or Git Bash:</p>
+<pre><code class="language-bash">eval &quot;$(ssh-agent -s)&quot;
+ssh-add ~/.ssh/bdg_course_ed25519
+cat ~/.ssh/bdg_course_ed25519.pub
+</code></pre>
+<p>Use <code>ssh-add -l</code> to list the keys loaded in the agent when diagnosing a key problem.</p>
+<p>Add only the <code>.pub</code> content to GitHub Settings → SSH and GPG keys → New SSH key. The private key has no <code>.pub</code> suffix. Never display it or place it in a repository.
+Before accepting a first connection, compare its fingerprint against <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints">GitHub's official fingerprints</a>. Do not accept a mismatch.</p>
+<pre><code class="language-bash">ssh -T git@github.com
+</code></pre>
+<p>A successful response confirms authentication but says shell access is unavailable; this test can return exit code 1. For Permission denied, check the agent, public key and correct account. Do not copy a private key to fix authentication.</p>
+<h2 id="5-remote-repository">5 · Remote repository</h2>
+<p>On GitHub, create an empty <code>python-course</code> repository, without an automatically generated README, .gitignore or license. Choose visibility that lets the instructor view your submission. Do not embed credentials in URLs.</p>
+<pre><code class="language-bash">git remote add origin git@github.com:USERNAME/python-course.git
+git remote -v
+git push -u origin main
+git pull --ff-only
+</code></pre>
+<p>A remote is a named address of another repository; origin is the conventional name for this connection. Here that address is on GitHub. Push sends commits; pull fetches and integrates changes. If origin already exists, inspect <code>git remote -v</code> instead of adding it again. If push is rejected, ask for help; do not force-push.
+Clone creates a new local copy. From the parent directory, use a different destination name:</p>
+<pre><code class="language-bash">cd ..
+git clone git@github.com:USERNAME/python-course.git python-course-check
+cd python-course-check
+git log --oneline
+python3 classwork/lesson-02/main.py
+</code></pre>
+<p>On Windows use <code>py</code> for the last command. Return to your working repository with <code>cd ../python-course</code>. If authentication cannot be resolved during class, finish local commits and use fallback F2 in practice.md, record the blocker and get support. The remote submission is still incomplete.</p>
+<h2 id="6-exact-commit-link">6 · Exact commit link</h2>
+<pre><code class="language-bash">git log -1 --format=%H
+</code></pre>
+<p>On GitHub, open the repository's commit history and open your latest submission commit. Submit the real URL in the form <code>https://github.com/USERNAME/python-course/commit/FULL_SHA</code>. Check that its SHA matches your terminal and the instructor has access. A repository home-page URL does not identify a fixed snapshot. Corrections use new commits and new links; preserve the previous submission.</p>
+<p>Read assignments from the instructor’s course repository. Keep classroom practice in your python-course repository. HW1 is first assigned after lesson03; use a separate repository named Homeworks containing HW1/main.py and HW1/README.md. Read <a href="../../homework/hw-01/assignment.html">the HW1 brief</a> and <a href="../../homework/hw-01/submission.html">submission workflow</a> for the run/example/prediction/AI-disclosure requirements and exact commit URL. Later homework folders will be announced with their briefs; do not create21 empty assignments.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

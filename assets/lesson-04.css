@@ -1,0 +1,48 @@
+/* Lesson04 content only. Original artwork/canvas/shared theme are unchanged. */
+.lesson-four .pair{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;margin-top:28px}
+.lesson-four .window pre{font-size:23px;line-height:1.5;padding:20px;white-space:pre-wrap}
+.lesson-four .big-question{font-size:32px;line-height:1.35;margin-top:28px}
+.lesson-four .cover-decision{border-top:4px solid var(--ink);padding-top:24px;margin-top:15px}
+.lesson-four .cover-decision code{font-size:27px}.lesson-four .cover-decision strong{font:700 52px/1.25 BDG;display:block;margin-top:24px}
+.lesson-four .boundary{position:relative;margin:65px 15px 0;border-top:4px solid var(--ink);display:flex;justify-content:space-between}
+.lesson-four .tick{width:120px;text-align:center;padding-top:25px;position:relative;font:35px BDGCode}
+.lesson-four .tick::before{content:'';position:absolute;height:20px;width:3px;top:-12px;left:50%;background:var(--ink)}
+.lesson-four .tick.exact{background:var(--ink);color:white;border-radius:60px;padding:16px 0;margin-top:-37px;border:5px solid white}
+.lesson-four .tick.exact::before{display:none}
+.lesson-four .range-caption{display:grid;grid-template-columns:1fr 1fr;gap:35px;font-size:25px;margin-top:30px}
+.lesson-four .range-caption div{border-bottom:3px solid var(--line);padding:0 0 18px}.lesson-four .range-caption b{font-family:BDGCode}
+.lesson-four .literal-contrast{border-top:4px solid var(--ink);padding-top:20px;font:33px/1.5 BDGCode}
+.lesson-four .literal-contrast strong{display:block;font:700 55px BDGCode;margin:24px 0 16px}.lesson-four .literal-contrast p{font:23px/1.4 BDG}
+.lesson-four .condition-bar{border:2px solid var(--ink);padding:17px 25px;display:flex;justify-content:space-between;gap:20px;font:25px BDGCode;margin-top:30px}
+.lesson-four .paths{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:24px}.lesson-four .path{border-top:3px solid var(--line);padding:15px 0}
+.lesson-four .path .caption{display:block;margin-bottom:12px}.lesson-four .path strong{display:block;font-size:29px;margin-bottom:14px}
+.lesson-four .shared-step{font-size:25px;border-top:2px solid var(--ink);margin-top:23px;padding-top:18px}
+.lesson-four .chosen{padding:12px;background:var(--ink);color:white;font-size:23px}
+.lesson-four #if-path:has(.visible) .true-path{border-color:var(--ink)}
+.lesson-four .indent-demo{margin-top:28px;border:1px solid var(--line);font:24px/1.65 BDGCode;padding:20px 24px}
+.lesson-four .indent-line{padding-left:56px;border-left:5px solid var(--ink);background:var(--paper)}
+.lesson-four .indent-caption{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-top:26px}.lesson-four .indent-caption p{font-size:23px}
+.lesson-four .trace{margin-top:26px}.lesson-four .trace-row{display:grid;grid-template-columns:190px 1fr 210px;gap:20px;border-top:1px solid var(--line);padding:19px 0;font-size:23px;align-items:baseline}.lesson-four .trace-row code{font-size:25px}.lesson-four .trace-row .hit{font-weight:700}
+.lesson-four .chain-note{border-left:4px solid var(--ink);padding:10px 0 10px 20px;margin-top:20px;font-size:25px}
+.lesson-four .rule-column{border-top:4px solid var(--ink);padding-top:18px}.lesson-four .rule-column h3{font-size:26px}.lesson-four .rule-line{font:24px/1.65 BDGCode;margin-top:15px}.lesson-four .outcome{font-size:26px;margin-top:25px;border-left:4px solid var(--ink);padding-left:18px}
+.lesson-four .activity-band{display:flex;align-items:baseline;gap:25px;border-top:4px solid var(--ink);padding-top:22px;margin-top:35px}.lesson-four .activity-band strong{font:700 65px BDG}.lesson-four .activity-band span{font-size:25px}.lesson-four .activity-purpose{font-size:29px;max-width:740px;margin-top:32px}
+.lesson-four .logic-svg{width:100%;height:210px;overflow:visible}.lesson-four .logic-svg text{font-family:BDG;font-size:22px;fill:var(--ink)}.lesson-four .logic-svg .rule-box{fill:var(--paper);stroke:var(--ink);stroke-width:2}.lesson-four .logic-svg path,.lesson-four .logic-svg line{fill:none;stroke:var(--ink);stroke-width:3}
+.lesson-four .logic-summary{font-size:25px;margin-top:18px}
+.lesson-four .trap{font:26px/1.6 BDGCode;border-top:4px solid var(--ink);padding:20px 0;margin-top:25px}.lesson-four .truthy-word{background:var(--ink);color:white;padding:3px 8px}.lesson-four .trap-reason{font-size:25px;margin-top:24px;max-width:780px}
+.lesson-four .tree{margin-top:30px;display:grid;grid-template-columns:1fr 1.1fr;gap:35px}.lesson-four .tree-test{font:27px BDGCode;border:2px solid var(--ink);padding:20px;margin-bottom:18px}.lesson-four .tree-inner{border-left:4px solid var(--ink);padding-left:22px}.lesson-four .tree-inner .tree-test{font-size:25px}.lesson-four .tree-choice{font-size:24px;padding:10px 0;border-bottom:1px solid var(--line)}
+.lesson-four .two-tasks{display:grid;grid-template-columns:1fr 1.45fr;gap:50px;margin-top:35px}.lesson-four .two-tasks strong{font:700 52px BDG}.lesson-four .two-tasks .task-title{font-size:27px;margin-top:18px}.lesson-four .two-tasks .caption{font-size:20px;margin-top:17px}
+.lesson-four .message-slip{border-left:5px solid var(--ink);padding:20px 25px;background:var(--paper);font-size:29px;margin-top:25px}.lesson-four .normalization{font:23px/1.5 BDGCode;margin-top:18px}.lesson-four .routing{display:flex;gap:24px;margin-top:24px}.lesson-four .routing div{flex:1;border-top:3px solid var(--ink);padding-top:14px;font-size:23px}.lesson-four .routing code{display:block;font-size:23px;margin-bottom:12px}
+.lesson-four .message-compare{margin-top:30px}.lesson-four .message-row{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line);font-size:26px}.lesson-four .message-row b{font-size:21px;color:var(--muted)}
+@media print{.lesson-four .fragment{visibility:visible!important;opacity:1!important}}
+
+.lesson-four #recall .activity-band{margin-top:16px;padding-top:12px}
+.lesson-four #recall .activity-band strong{font-size:48px}
+.lesson-four #recall .activity-band span{font-size:24px}
+.lesson-four .boundary{margin-top:42px}
+.lesson-four .range-caption{margin-top:22px}
+.lesson-four .range-caption div{padding-bottom:12px}
+.lesson-four .range-caption p{margin:0}
+.lesson-four .trace-row{grid-template-columns:260px 1fr 210px;gap:18px}
+.lesson-four .logic-svg{height:175px}
+.lesson-four .logic-summary{font-size:24px;margin-top:12px}
+.lesson-four #activity-e .big-question{font-size:27px;margin-top:18px}

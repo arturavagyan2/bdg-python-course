@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 01 · Student practice · BDG</title><link rel="stylesheet" href="../../assets/site.css">
+</head><body><main><header><a href="../../index.html">BDG · Python &amp; AI</a></header>
+<article><h1 id="lesson-01-student-practice">Lesson 01 · Student practice</h1>
+<p>Use <strong>one</strong> route: the notebook or the matching script project. The tasks and objectives are the same; do not complete both sets. Work individually before comparing with a partner. Hints are available from the instructor; you do not need to guess new syntax.</p>
+<p>In a notebook, edit a code cell and press Shift+Enter to run it. An earlier output stays visible until you rerun. In a script, edit, save, then run the file. Lines beginning with # are comments for the reader; Python ignores them. Put predictions and observations in the “My notes” cells or in notes.md. Do not paste terminal commands into Python code.</p>
+<p>The instructor demonstrates W1 before A, W2 before B, and W3 before C. D1 happens in the AI discussion; D2 follows it. Finish with independent task E. Times include checking your result. Extensions are optional, not extra requirements.</p>
+<h2 id="a-an-invitation-a-visitor-can-use-10-minutes">A · An invitation a visitor can use · 10 minutes</h2>
+<p><strong>Learning objective:</strong> Turn a short request into readable output, without copying the demonstration.</p>
+<p><strong>Already taught:</strong> Save/run a file; print(), quoted text, parentheses and line order; worked example W1.</p>
+<p>The reading club meets at the Library hall at 17:00. Visitors should bring a book. Make a small script that prints an invitation containing those facts. Choose labels and an order that help someone decide where to go and what to bring. There is no required number of print calls.</p>
+<p>Start with the empty coding area. Write the output you intend in your notes first, then turn it into Python. Save and run it. For the script route, run the same saved file from both the editor and terminal. Notebook users also save their code as invitation.py in the practice-project folder and run that file in both ways.</p>
+<p><strong>Expected behavior:</strong> a reader can identify the event, location, time and what to bring; both file runs agree. Python should not ask the visitor any questions. Ask a partner to find each fact using only the output.</p>
+<p><strong>Optional extension:</strong> Change the meeting time. Before running, identify exactly which line should change and which output should stay the same.</p>
+<h2 id="b-text-that-looks-like-a-calculation-8-minutes">B · Text that looks like a calculation · 8 minutes</h2>
+<p><strong>Learning objective:</strong> Distinguish showing written text from asking Python to add numbers.</p>
+<p><strong>Already taught:</strong> W2: quoted text is printed literally; unquoted whole numbers joined by + are added.</p>
+<p>Read the two starter lines without running them. Predict each output in your notes and explain whether Python will add anything. Run the code and compare it with your prediction.</p>
+<p>There are now five people in the first group and three in the second. Change the program so the first line shows the new written calculation and the second line calculates its total. Do not type a precomputed total into the second print call.</p>
+<p><strong>Expected behavior:</strong> the first line still contains a plus sign; the second is a number. Both refer to the new group sizes. Explain what the quotation marks changed.</p>
+<p><strong>Optional extension:</strong> Can you make the two lines disagree by changing only one character? Predict the disagreement, run it, then restore a consistent version.</p>
+<h2 id="c-it-crashes-and-then-it-is-still-wrong-12-minutes">C · It crashes — and then it is still wrong · 12 minutes</h2>
+<p><strong>Learning objective:</strong> Repair a syntax error and separately check whether successful output contains the right information.</p>
+<p><strong>Already taught:</strong> W3: read the final error message, match quotes/parentheses, save and rerun. # begins a comment for humans.</p>
+<p>The lost-property desk actually closes at 18:00. The starter has both a Python-writing mistake and an out-of-date closing time.</p>
+<ol>
+<li>Run the starter as supplied. Record the final error type and the line Python points to. A traceback is diagnostic information, not your intended output.</li>
+<li>Repair only the writing mistake first. Run again. Does the output now meet the desk’s request?</li>
+<li>Update the closing time and run again. Record why a successful run alone was not enough.</li>
+<li>Save a working copy. Deliberately remove one quotation mark, predict what will happen, and run once. Restore it and rerun successfully before finishing.</li>
+</ol>
+<p><strong>Expected behavior:</strong> the final saved file runs without an error and clearly gives the correct desk and closing time. Your notes distinguish the punctuation repair from the information correction. Exact error wording may vary by Python version.</p>
+<p><strong>Optional extension:</strong> Swap the two complete print lines. Predict and check the output order. Choose the order you find easier to read and explain why.</p>
+<h2 id="d-check-a-claim-not-a-confident-tone-14-minutes">D · Check a claim, not a confident tone · 14 minutes</h2>
+<p><strong>Learning objective:</strong> Distinguish a written rule from learned behavior and use direct evidence to check a claim about Python.</p>
+<p><strong>Already taught:</strong> AI discussion; W2 text versus numbers; running the exact code in question.</p>
+<p><strong>D1 · Discuss/investigate · 4 minutes during the AI discussion.</strong> A written rule flags every message containing the word “free”. Consider (a) a genuine hotel confirmation saying “Free parking with your booking”, and (b) a scam saying “Claim your cash prize”. For each, state what the rule does and why that helps or fails. Suggest one useful labelled training example for a learned spam filter. Can you know a trained model’s answer without testing that model?</p>
+<p><strong>D2 · Verify · 10 minutes.</strong> This is an invented, deliberately questionable AI-style response, not a real model transcript:</p>
+<blockquote>
+<p>“<code>print(&quot;7 + 2&quot;)</code> prints the number 9. Python always calculates sums inside print.”</p>
+</blockquote>
+<p>Before running anything, write whether you agree and why. Type the exact claimed code into the coding area and run it. Record the code, observed output and your decision about the claim. Then remove only the quotation marks, predict the effect and run again. Explain why this second run does not prove the original claim correct.</p>
+<p><strong>Expected behavior:</strong> your notes separate the claim from two observations and use those observations to justify a decision. The supplied statement may be wrong; do not change code merely to make the statement appear right. No AI account or paid service is needed.</p>
+<p><strong>Optional extension:</strong> Write a misleading claim about a different print example and ask a partner to propose a check. Label your claim synthetic; record which exact code would test it.</p>
+<h2 id="e-a-useful-sign-for-the-quiet-room-18-minutes">E · A useful sign for the quiet room · 18 minutes</h2>
+<p><strong>Learning objective:</strong> Combine literal information with a calculated quantity in an independently planned script.</p>
+<p><strong>Already taught:</strong> Tasks A–D: print(), quoted text, simple +, output order, save/run/check. No variables or input needed.</p>
+<p>A librarian wants a sign for the quiet room. Quiet reading starts at 16:00 in Room 2. There are six chairs near the windows and four by the door. Visitors need the total seating capacity, not a list of where the chairs stand.</p>
+<p>Plan an output that answers: Where is quiet reading? When does it start? How many seats are there altogether? Write the script from the empty coding area. Ask Python to calculate the capacity from the two counts. Put a clear label beside or on the line before the calculated result, using only the print syntax already taught.</p>
+<p>Save and run; compare the output with each fact in the request. Ask a partner to read the output without the instructions. Then the librarian adds two chairs by the door: change the relevant count, predict what should change, and rerun. Leave the final version describing the updated room.</p>
+<p><strong>Expected behavior:</strong> the final output gives the location, starting time and correctly labelled updated capacity. It still calculates from the two counts. The time and location stay unchanged. No fixed layout or print quota is required. This is a static sign: it does not count people entering the room.</p>
+<p><strong>Optional extension:</strong> The librarian changes the time too. Make the change and describe which facts must be checked again. Explain why this script cannot report how many seats are free right now.</p>
+<p>For executable starters, open <a href="practice.ipynb">practice.ipynb</a> or <a href="practice-project/README.html">the script project</a>.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

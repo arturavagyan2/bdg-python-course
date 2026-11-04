@@ -1,0 +1,55 @@
+/* Lesson 03 content only; shared canvas, artwork and runtime are unchanged. */
+.lesson-three .pair{display:grid;grid-template-columns:1.15fr 1fr;gap:34px;align-items:start;margin-top:26px}
+.lesson-three .window pre{font-size:22px;line-height:1.6;padding:20px;white-space:pre-wrap}
+.lesson-three .state-ledger{border-top:4px solid var(--ink);padding-top:12px}
+.lesson-three .value-line{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding:15px 0;font:22px BDGCode}
+.lesson-three .value-line b{font-size:30px}
+.lesson-three .subtle{color:var(--muted)}
+.lesson-three .reason{font-size:23px;border-left:4px solid var(--ink);padding:10px 0 10px 20px;margin-top:24px}
+.lesson-three .giant{font:700 72px/1.1 BDGCode;letter-spacing:-3px}
+.lesson-three .type-band{display:flex;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding:20px 0}
+.lesson-three .type-band strong{font:32px BDGCode;min-width:150px}
+.lesson-three .type-band span{font-size:23px}
+.lesson-three .equations{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+.lesson-three .expression{font:28px/1.6 BDGCode;padding:16px 0;border-top:4px solid var(--ink)}
+.lesson-three .expression .result{display:block;font:700 48px BDGCode;margin:20px 0 12px}
+.lesson-three .expression p{font:22px/1.4 BDG}
+.lesson-three .name-choice{display:grid;grid-template-columns:280px 1fr;gap:25px;padding:18px 0;border-bottom:1px solid var(--line);font-size:23px}
+.lesson-three .name-choice code{font-size:24px}
+.lesson-three .name-choice .bad{text-decoration:line-through;text-decoration-thickness:2px}
+.lesson-three .entry-flow{display:grid;grid-template-columns:1fr 90px 1fr;gap:20px;align-items:center;margin:35px 0}
+.lesson-three .entry-value{padding:22px;border:1px solid var(--line)}
+.lesson-three .entry-value strong{display:block;font:38px BDGCode;margin:10px 0}
+.lesson-three .entry-action{font:22px BDGCode;text-align:center}
+.lesson-three .packing{display:flex;gap:20px;align-items:center;margin:30px 0}
+.lesson-three .pack{display:grid;grid-template-columns:repeat(5,22px);gap:8px;padding:16px 12px;border:2px solid var(--ink)}
+.lesson-three .pack.loose{border-color:transparent;grid-template-columns:repeat(2,22px)}
+.lesson-three .label-dot{height:28px;width:22px;background:var(--ink);border-radius:2px}
+.lesson-three .pack-caption{display:flex;justify-content:space-between;font-size:22px;border-bottom:1px solid var(--line);padding-bottom:15px}
+.lesson-three .operator-results{display:flex;gap:40px;margin-top:25px}
+.lesson-three .operator-results div{flex:1;font:25px/1.6 BDGCode}
+.lesson-three .operator-results strong{display:block;font:700 37px BDGCode}
+.lesson-three .square{display:grid;grid-template-columns:repeat(3,50px);gap:8px;padding:20px;border:2px solid var(--ink);width:max-content}
+.lesson-three .square i{width:50px;height:50px;background:var(--ink)}
+.lesson-three .update-line{display:grid;grid-template-columns:170px 1fr 100px;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);align-items:center;font-size:23px}
+.lesson-three .update-line code{font-size:23px}.lesson-three .update-line b{font-size:28px}
+.lesson-three .task-strip{display:flex;gap:26px;align-items:baseline;border-top:4px solid var(--ink);padding-top:22px;margin-top:35px}
+.lesson-three .task-strip strong{font:700 65px BDG}.lesson-three .task-strip span{font-size:24px}
+.lesson-three .task-context{margin-top:28px;font-size:28px;max-width:700px}
+.lesson-three .receipt-layout{display:grid;grid-template-columns:1fr 300px;gap:40px;margin-top:25px}
+.lesson-three .receipt-paper{border:1px solid var(--line);padding:25px;font-size:22px;transform:rotate(-1deg)}
+.lesson-three .receipt-paper h3{border-bottom:2px dashed var(--line);padding-bottom:18px}.lesson-three .receipt-paper div{display:flex;justify-content:space-between;margin:18px 0}.lesson-three .receipt-paper .sum{border-top:2px dashed var(--line);padding-top:18px}
+.lesson-three .homework-path{font:27px/1.6 BDGCode;border-left:4px solid var(--ink);padding-left:25px;margin:28px 0}
+.lesson-three .cover-value{background:var(--ink);color:white;padding:32px}.lesson-three .cover-value code{font-size:28px}.lesson-three .cover-value .giant{margin:25px 0}
+.lesson-three .fn{font-weight:700}.lesson-three .str{color:#62656d}
+@media print{.lesson-three .receipt-paper{transform:none}}
+
+.lesson-three #stored-state .pair{grid-template-columns:1fr;margin-top:12px;gap:0}
+.lesson-three #stored-state .window pre{font-size:22px;line-height:1.4;padding:16px 20px}
+.lesson-three #stored-state .state-ledger{display:flex;gap:24px;border-top:0;padding-top:8px;align-items:center}
+.lesson-three #stored-state .state-ledger>.caption{display:none}
+.lesson-three #stored-state .value-line{font-size:18px;gap:10px;flex:1;padding:8px 0}
+.lesson-three #stored-state .value-line b{font-size:27px}
+.lesson-three .type-band strong{min-width:240px}
+.lesson-three #multiply-power .expression{padding-top:10px;padding-bottom:0}
+.lesson-three #multiply-power .expression p{margin-bottom:10px}

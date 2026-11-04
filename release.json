@@ -1,0 +1,14 @@
+{
+  "lessons": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05"
+  ],
+  "homework": [
+    "hw-01",
+    "hw-02"
+  ],
+  "schedule_slot": null
+}

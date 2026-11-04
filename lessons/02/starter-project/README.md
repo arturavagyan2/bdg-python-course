@@ -1,0 +1,2 @@
+# Classroom project starter
+In your own python-course repository, copy the classwork/lesson-02 folder from here. Copy .gitignore to the root only if you do not already have one; otherwise add missing rules without removing existing ones. Follow G2 in ../practice.md. main.py includes a reminder beside the coding area; the README beside it is the run guide you will complete. These files are classroom practice, separate from the later Homeworks/HW1 submission.

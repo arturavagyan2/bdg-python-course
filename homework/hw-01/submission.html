@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HW1 · Submit a fixed version · BDG</title><link rel="stylesheet" href="../../assets/site.css">
+</head><body><main><header><a href="../../index.html">BDG · Python &amp; AI</a></header>
+<article><h1 id="hw1-submit-a-fixed-version">HW1 · Submit a fixed version</h1>
+<p>Use the existing lesson-2 Git/SSH setup; this guide changes the destination to <strong>Homeworks</strong>, not the classroom python-course repository.</p>
+<ol>
+<li>On GitHub create an empty repository named Homeworks, with visibility/instructor access that permits review. If you already have it, use your existing local copy and inspect its status/remote rather than initializing or adding origin again.</li>
+<li>For a new local folder, create Homeworks outside the course materials. From that folder run <code>git init -b main</code>. Copy the course's starter/HW1 here and work in HW1/main.py and HW1/README.md. Use your own already-configured Git identity. On Windows use Git Bash for these Git commands.</li>
+<li>From the Homeworks root, after saving and running:</li>
+</ol>
+<pre><code class="language-bash">python3 HW1/main.py
+git status
+git add HW1/main.py HW1/README.md
+git commit -m &quot;Add group trip budget calculator&quot;
+</code></pre>
+<p>Use a meaningful message describing your actual change; no commit-count quota applies. On Windows replace python3 with your verified py command. Inspect selected files before committing.</p>
+<p>For a new local repository connected to a new empty GitHub repository, replace USERNAME with your account:</p>
+<pre><code class="language-bash">git remote add origin git@github.com:USERNAME/Homeworks.git
+git remote -v
+git push -u origin main
+</code></pre>
+<p>If origin already exists, inspect it; do not add a duplicate. Existing configured copies normally use <code>git push</code>. If rejected, ask for help instead of force-pushing. SSH keys/authentication steps remain in lessons/02/workflow.md in the course materials; never copy private keys into this repository.</p>
+<p>Finally run <code>git log -1 --format=%H</code>. Open that commit's page on GitHub; match the full SHA and confirm instructor access. Submit its exact /Homeworks/commit/FULL_SHA URL using the channel announced by your instructor. Later corrections use new commits/links. Account problems remain support issues: keep local work and report the exact non-secret blocker.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesson 01 · Set up and run Python · BDG</title><link rel="stylesheet" href="../../assets/site.css">
+</head><body><main><header><a href="../../index.html">BDG · Python &amp; AI</a></header>
+<article><h1 id="lesson-01-set-up-and-run-python">Lesson 01 · Set up and run Python</h1>
+<p>Goal: Python 3.12+ and one working editor. Follow these steps with your instructor. Complete setup before independent practice where possible.</p>
+<h2 id="what-the-tools-do">What the tools do</h2>
+<p>The editor changes a text file. Python runs the saved instructions in that file. The terminal accepts commands, such as the command that starts Python. The Python extension helps VS Code find and run Python; installing that extension alone does not install Python.</p>
+<p>A file path says where a file lives. The terminal starts from a current folder; paths below are relative to the course root unless stated otherwise. Do not type prompt characters such as <code>$</code> or <code>&gt;&gt;&gt;</code> into a command. The <code>python3 --version</code> command asks the installed program its version; it does not run your script. PATH is the list of folders searched when you type a program name. <code>command -v python3</code> shows which program that search found on Ubuntu.</p>
+<h2 id="ubuntu">Ubuntu</h2>
+<p>In a terminal:</p>
+<pre><code class="language-bash">python3 --version
+command -v python3
+</code></pre>
+<p>If Python is missing:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install python3
+python3 --version
+</code></pre>
+<p>If the version is below 3.12, ask the instructor to prepare a compatible classroom environment. Do not replace the system Python with an unverified download.
+Install VS Code using its <a href="https://code.visualstudio.com/docs/setup/linux">official Linux guide</a>, or use an existing PyCharm installation. In VS Code, install the Microsoft Python extension. Choose Open Folder and open the course directory. Increase the editor and terminal font size until you can read them comfortably; keep the file and terminal visible together. Use Ctrl+Shift+P → Python: Select Interpreter and select the interpreter you checked in the terminal. Choose Terminal → New Terminal.</p>
+<h2 id="windows">Windows</h2>
+<p>Install Python 3.12+ from the <a href="https://www.python.org/downloads/windows/">official Python site</a>, following the installer instructions. Reopen your terminal and check:</p>
+<pre><code class="language-powershell">py --version
+</code></pre>
+<p>If <code>py</code> is unavailable, try <code>python --version</code> and record the command that works. PATH is the list of directories the terminal searches for commands. If a command is not found, check the installation and PATH, then open a new terminal.
+Select the same interpreter in VS Code. In PyCharm, use Settings → Project → Python Interpreter, then the script's Run command.</p>
+<h2 id="run-the-same-file-in-two-ways">Run the same file in two ways</h2>
+<p>Save <code>lessons/01/demo/hello.py</code>. In VS Code choose <strong>Run Python File in Terminal</strong>. Then, from the course root:</p>
+<pre><code class="language-bash">python3 lessons/01/demo/hello.py
+</code></pre>
+<p>On Windows use <code>py lessons/01/demo/hello.py</code>. Both runs should print <code>Hello, World!</code>. The interpreter reads and executes the saved <code>.py</code> instructions.</p>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;&gt;&gt;</code> instead of a normal terminal prompt</td>
+<td>You are inside interactive Python. Enter <code>exit()</code>, then run the terminal command.</td>
+</tr>
+<tr>
+<td>File not found</td>
+<td>Check your current directory, filename and <code>.py</code> extension.</td>
+</tr>
+<tr>
+<td>Old output</td>
+<td>Save the edited file and run it again.</td>
+</tr>
+<tr>
+<td>Different editor and terminal behavior</td>
+<td>Check that both use the intended interpreter and file.</td>
+</tr>
+<tr>
+<td>SyntaxError after copying</td>
+<td>Check straight quotation marks and matching parentheses.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notebook-prepared-environment-or-script-fallback">Notebook: prepared environment or script fallback</h2>
+<p>The instructor prepares Jupyter using the root README commands. Open <code>teaching.ipynb</code>, select a Python 3 kernel and use Shift+Enter. Change a message and run its cell again. An old output remains until you rerun the cell.
+If setup takes more than five minutes, use <code>demo/notebook-demo.py</code> for the same run/edit/rerun demonstration and use the practice project. Formal environment and package-management instruction remains lesson 13.</p>
+<p>References: <a href="https://code.visualstudio.com/docs/languages/python/">VS Code Python</a>, <a href="https://code.visualstudio.com/docs/python/run">running Python</a>, <a href="https://docs.python.org/3.12/using/unix.html">Python on Unix</a>. Source review: 15 October 2026. Installation is not performed automatically by these materials.</p>
+<h2 id="if-setup-is-blocking-practice">If setup is blocking practice</h2>
+<p>After the instructor's setup timebox, switch to a prepared classroom computer or pair with a learner whose Python works. Be the driver: type, save and run your own changes on that machine; keep a separate folder with your name. Use the script route if only Jupyter is blocked. If no runtime is available, predict the output on paper, mark the punctuation error and explain the intended fix. These are useful interim tasks but do not count as a verified run. Keep your files and a note of the exact command/error for a support session. Do not spend the entire practice block reinstalling.</p>
+<p>If ready early, run hello.py from both routes, deliberately edit without saving and explain what the terminal runs; then save and rerun. Check the interpreter path and write the actual command you used so a partner can repeat it. No additional packages are needed for these scripts.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

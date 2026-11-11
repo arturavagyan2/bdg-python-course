@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 07 · Lists, Tuples & Comprehensions</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="collections"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Lists, tuples and useful code</h2><p>Keep several values, then choose what to change.</p><div class="cover-code"><div class="window editor"><div class="bar">Example.py</div><pre>items = [&quot;tea&quot;, &quot;rice&quot;, &quot;soap&quot;]
+print(items)</pre></div></div><p class="foot">Start with practice R · 8 minutes. Then W1.</p></section>
+<section id="positions"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The first position is index 0</h2><div class="trace-row"><span>0 · tea</span><span>1 · rice</span><span>2 · soap</span><span>3 · apples</span></div><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>items = [&quot;tea&quot;, &quot;rice&quot;, &quot;soap&quot;,
+         &quot;apples&quot;]
+print(items[0])
+print(items[-1])</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>tea
+apples</pre></div></div></div><p class="foot">Predict first. -1 reads the last item. W1 / intentional error X1.</p></section>
+<section id="slice"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A slice stops before the end</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>items = [&quot;tea&quot;, &quot;rice&quot;, &quot;soap&quot;,
+         &quot;apples&quot;]
+print(items[1:3])
+print(items[:2])
+print(len(items))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;rice&#x27;, &#x27;soap&#x27;]
+[&#x27;tea&#x27;, &#x27;rice&#x27;]
+4</pre></div></div></div><p class="foot">[1:3] selects indexes 1 and 2. W1 also shows [2:] and replacing one item.</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Read and change a packing list</h2><div class="task-row"><strong>A</strong><div><p>Find a slice.<br>Replace one item.</p><a href="practice.ipynb">Open A · 14 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice A.</p></section>
+<section id="methods"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Change the same list</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>queue = [&quot;Ben&quot;, &quot;Dina&quot;]
+queue.append(&quot;Eli&quot;)
+queue.insert(1, &quot;Cara&quot;)
+queue.remove(&quot;Dina&quot;)
+print(queue)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;Ben&#x27;, &#x27;Cara&#x27;, &#x27;Eli&#x27;]</pre></div></div></div><p class="foot">W2. append: end. insert: position. remove: first matching value.</p></section>
+<section id="pop"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A method can return a removed item</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>queue = [&quot;Ben&quot;, &quot;Cara&quot;, &quot;Eli&quot;]
+served = queue.pop(0)
+queue.sort()
+print(served)
+print(queue)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>Ben
+[&#x27;Cara&#x27;, &#x27;Eli&#x27;]</pre></div></div></div><p class="foot">pop() alone removes the last item. append/sort return None. Run W2.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Repair the queue</h2><div class="task-row"><strong>B</strong><div><p>Why did the list become None?<br>Run, explain, repair, then finish.</p><a href="practice.ipynb">Open B · 16 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice B.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="loop-list"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A loop can build a new list</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>prices = [3, 6, 9]
+reduced = []
+for price in prices:
+    reduced.append(price - 1)
+print(reduced)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[2, 5, 8]</pre></div></div></div><p class="foot">W3. Which list changes? Check prices too.</p></section>
+<section id="comprehension"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The same calculation in a comprehension</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>prices = [3, 6, 9]
+reduced = [price - 1
+           for price in prices]
+print(reduced)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[2, 5, 8]</pre></div></div></div><p class="foot">For each price, keep price - 1. W3b. Use a loop when several steps read more clearly.</p></section>
+<section id="filter"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A final if chooses which values to keep</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>prices = [3, 6, 9]
+small = [price for price in prices
+         if price &lt;= 6]
+print(small)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[3, 6]</pre></div></div></div><p class="foot">Would changing <= to < keep 6? Predict before the reveal.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Choose sessions that fit</h2><div class="task-row"><strong>C</strong><div><p>Build with a loop.<br>Then filter and calculate new lists.</p><a href="practice.ipynb">Open C · 14 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice C.</p></section>
+<section id="tuple"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A tuple keeps a fixed record</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>room = (&quot;Room A&quot;, 12)
+name, seats = room
+print(name)
+print(seats)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>Room A
+12</pre></div></div></div><p class="foot">W4 / X2. Positions cannot be reassigned. A list suits a changing queue.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Unpack a journey</h2><div class="task-row"><strong>D</strong><div><p>Name the three fields.<br>Calculate the minutes left.</p><a href="practice.ipynb">Open D · 10 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice D.</p></section>
+<section id="manager"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A shopping list that survives menu turns</h2><div class="choices">1 Add &nbsp; 2 Remove &nbsp; 3 Search<br>4 Sort &nbsp; 5 Show &nbsp; 0 Exit</div><div class="task-row"><strong>E</strong><div><p>Build add, show and exit first.</p><a href="practice.ipynb">Open E · 30 minutes</a></div></div><p class="foot">W5 demonstrates a smaller playlist. item in items checks list membership. Check before remove.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Check the behavior</h2><p class="big">Add the same item twice.<br>Remove it once.<br>Try removing a missing item.</p><p class="prompt">Explain what your program should do.</p><p class="foot">Save your own code. Existing homework and deadlines remain unchanged.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

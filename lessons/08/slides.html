@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 08 · Sets, Dictionaries & Data-Structure Choices</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="collections"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Sets, dictionaries and useful choices</h2><p>Unique values or a value looked up by name?</p><div class="cover-code"><div class="window editor"><div class="bar">Example.py</div><pre>queue = [&quot;Ali&quot;, &quot;Lia&quot;, &quot;Nora&quot;]
+served = queue.pop()
+print(served)</pre></div></div><p class="foot">Predict, then modify the queue in practice R · 8 minutes.</p></section>
+<section id="unique"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>One entry per distinct name</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>arrivals = [&quot;Mia&quot;, &quot;Noah&quot;, &quot;Mia&quot;]
+present = set(arrivals)
+print(sorted(present))
+print(len(present))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;Mia&#x27;, &#x27;Noah&#x27;]
+2</pre></div></div></div><p class="foot">W1. sorted gives predictable display. A set itself has no defined order or indexes.</p></section>
+<section id="set-change"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Adding the same name again</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>present = {&quot;Mia&quot;, &quot;Noah&quot;}
+present.add(&quot;Mia&quot;)
+present.add(&quot;Lena&quot;)
+present.remove(&quot;Noah&quot;)
+print(sorted(present))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;Lena&#x27;, &#x27;Mia&#x27;]</pre></div></div></div><p class="foot">Predict the size. Check membership before removing a possibly absent name. Empty set: set().</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Keep unique attendees</h2><div class="task-row"><strong>A</strong><div><p>Remove repeat arrivals.<br>Add a name and safely remove another.</p><a href="practice.ipynb">Open A · 15 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice A.</p></section>
+<section id="groups"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Who attends either workshop?</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>morning = {&quot;Ada&quot;, &quot;Bo&quot;}
+evening = {&quot;Bo&quot;, &quot;Cy&quot;}
+print(sorted(morning.union(evening)))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;Ada&#x27;, &#x27;Bo&#x27;, &#x27;Cy&#x27;]</pre></div></div></div><p class="foot">Union includes either group. Bo needs one badge, even though Bo attends both.</p></section>
+<section id="overlap"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Both groups or one group only?</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>morning = {&quot;Ada&quot;, &quot;Bo&quot;}
+evening = {&quot;Bo&quot;, &quot;Cy&quot;}
+both = morning.intersection(evening)
+only = morning.difference(evening)
+print(sorted(both))
+print(sorted(only))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>[&#x27;Bo&#x27;]
+[&#x27;Ada&#x27;]</pre></div></div></div><p class="foot">Intersection: both. Difference: start with morning and exclude evening. W2.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Plan workshop places</h2><div class="task-row"><strong>B</strong><div><p>Choose who needs a badge.<br>Find clashes and coding-only names.</p><a href="practice.ipynb">Open B · 14 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice B.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="dictionary"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A key identifies a value</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>stock = {&quot;pens&quot;: 8, &quot;pads&quot;: 3}
+print(stock[&quot;pens&quot;])
+stock[&quot;pens&quot;] = 6
+stock[&quot;clips&quot;] = 10
+del stock[&quot;pads&quot;]
+print(stock)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>8
+{&#x27;pens&#x27;: 6, &#x27;clips&#x27;: 10}</pre></div></div></div><p class="foot">W3. Product name: key. Count: value. Reusing a key replaces its value.</p></section>
+<section id="key-check"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Membership checks keys</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>stock = {&quot;pens&quot;: 6}
+print(&quot;pens&quot; in stock)
+print(6 in stock)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>True
+False</pre></div></div></div><p class="foot">Explain both predictions. Reading an absent key raises KeyError. Intentional example X1.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Repair the extension directory</h2><div class="task-row"><strong>C</strong><div><p>A room name identifies its extension.<br>Fix an update and safely delete.</p><a href="practice.ipynb">Open C · 14 minutes</a></div></div><p class="foot">Full brief and starter beside your code: practice C.</p></section>
+<section id="pairs"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>items() gives a key and its value</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>prices = {&quot;tea&quot;: 2, &quot;cake&quot;: 4}
+for item, price in prices.items():
+    print(item, price)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>tea 2
+cake 4</pre></div></div></div><p class="foot">W4. keys() gives keys. values() gives values. Unpack each items() pair into two names.</p></section>
+<section id="choices"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Choose for the behavior you need</h2><div class="choices">Editable song queue<br>Fixed row-and-seat pair<br>Unique tags<br>Extension lookup by room name</div><p class="prompt">Which collection suits each? Why?</p><p class="foot">Practice D · 10 minutes. Then write pair display and a values total in the coding area.</p></section>
+<section id="guard"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A missing entry is an expected case</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>stock = {&quot;pens&quot;: 8}
+product = &quot;glue&quot;
+if product in stock:
+    print(stock[product])
+else:
+    print(&quot;No such product&quot;)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output</div><pre>No such product</pre></div></div></div><p class="foot">W5. Check first, then access. Apply this idea to find and delete in E.</p></section>
+<section id="contacts"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A contact book with safe lookup</h2><div class="choices">1 Save or update &nbsp; 2 Find<br>3 Delete &nbsp; 4 Show all &nbsp; 0 Exit</div><div class="task-row"><strong>E</strong><div><p>One name has one current phone number.</p><a href="practice.ipynb">Open E · 30 minutes</a></div></div><p class="foot">Fictional data only. Phone numbers stay text. Data lasts only until the program ends.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Check an update and a missing name</h2><p class="big">Save one name twice.<br>Find its current number.<br>Delete it, then search again.</p><p class="prompt">Which line prevents a missing-key error?</p><p class="foot">Save your own code. Existing homework and deadlines remain unchanged.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

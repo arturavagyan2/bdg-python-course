@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 09 · Nested Data Structures &amp; Transformations</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"><style>.coding-deck .editor pre{white-space:pre}.coding-deck #nested-keys .code-pair{display:block}.coding-deck #nested-keys .fragment{display:block;max-width:230px;margin-top:16px}.coding-deck .path-expression{font:35px/1.4 BDGCode;margin:32px 0 20px}.path-expression span{border-bottom:3px solid var(--ink);margin-left:8px;padding-bottom:5px}.coding-deck .path-lines p,.coding-deck .responsibility-lines p{display:grid;grid-template-columns:430px 1fr;gap:25px;border-bottom:1px solid var(--line);padding:13px 0;margin:0;font-size:24px}.path-lines span,.responsibility-lines span{font-size:22px;color:var(--muted)}.coding-deck .responsibility-lines{margin-top:34px}.coding-deck .plain-compare{margin-top:30px}.coding-deck .plain-compare pre{font-size:21px;line-height:1.45;padding:14px;margin:12px 0 18px}.coding-deck .plain-compare p{font-size:23px}.coding-deck .code-pair + .prompt{font-size:22px;margin-top:18px}</style></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="nested"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Nested data structures</h2><p>One record keeps related values together.</p><div class="cover-code"><div class="window editor"><div class="bar">Today’s data</div><pre>contacts = [{&quot;name&quot;: &quot;Lena&quot;, &quot;phone&quot;: &quot;0101&quot;}]</pre></div></div><p class="foot">R · 8 minutes. Retrieve dictionary updates before nesting them.</p></section>
+<section id="rows"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A row, then a seat</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>seats = [[&quot;A1&quot;, &quot;A2&quot;], [&quot;B1&quot;, &quot;B2&quot;]]
+print(seats[1])
+print(seats[1][0])
+seats[1][0] = &quot;reserved&quot;
+print(seats[1])</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>[&#x27;B1&#x27;, &#x27;B2&#x27;]
+B1
+[&#x27;reserved&#x27;, &#x27;B2&#x27;]</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W1 · First bracket: row. Second bracket: seat.</p></section>
+<section id="records"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A position, then a field</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>tickets = [
+    {&quot;name&quot;: &quot;Mia&quot;, &quot;seats&quot;: 2},
+    {&quot;name&quot;: &quot;Noah&quot;, &quot;seats&quot;: 1}]
+print(tickets[1][&quot;name&quot;])
+tickets[1][&quot;seats&quot;] = 3
+print(tickets[1])</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>Noah
+{&#x27;name&#x27;: &#x27;Noah&#x27;, &#x27;seats&#x27;: 3}</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W2 · The list keeps records in order. The dictionary names each field.</p></section>
+<section id="path"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Read one bracket at a time</h2><div class="path-expression"><code>tickets<span>[1]</span><span>["name"]</span></code></div><div class="path-lines"><p><code>tickets</code><span>A list of records</span></p><p><code>tickets[1]</code><span>The second record</span></p><p class="fragment"><code>tickets[1]["name"]</code><span>The text "Noah"</span></p></div><p class="foot">Name the type of each intermediate value before changing a field.</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Update without replacing the record</h2><div class="task-row"><strong>A</strong><div><p>Reserve one seat.<br>Change one booking’s seat count.</p><a href="practice.ipynb">Practice A · 15 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="group-lists"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A key can select a whole list</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>teams = {&quot;morning&quot;: [&quot;Mia&quot;],
+         &quot;evening&quot;: [&quot;Noah&quot;, &quot;Bo&quot;]}
+teams[&quot;morning&quot;].append(&quot;Lia&quot;)
+for team, names in teams.items():
+    print(team, len(names))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>morning 2
+evening 2</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W3 · names receives the list for one team.</p></section>
+<section id="nested-keys"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Follow the keys to the value</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>rooms = {&quot;Studio&quot;: {&quot;supplies&quot;: {&quot;pens&quot;: 4}}}
+rooms[&quot;Studio&quot;][&quot;supplies&quot;][&quot;pens&quot;] += 2
+print(rooms[&quot;Studio&quot;][&quot;supplies&quot;][&quot;pens&quot;])</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>6</pre></div></div></div><p class="foot">W4 / X1 · rooms["pens"] fails because pens is at a deeper level.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Repair an update at the wrong level</h2><div class="task-row"><strong>B</strong><div><p>Add a member inside Friday.<br>Increase its marker stock.</p><a href="practice.ipynb">Practice B · 14 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="enumerate"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A position beside each record</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>names = [&quot;Mia&quot;, &quot;Noah&quot;]
+for number, name in enumerate(
+        names, 1):
+    print(number, name)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>1 Mia
+2 Noah</pre></div></div></div><p class="prompt">What changes when we remove , 1?</p><p class="foot">W5 · Display starts at 1 here. List indexes still start at 0.</p></section>
+<section id="zip"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A missing value can disappear quietly</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>names = [&quot;Mia&quot;, &quot;Noah&quot;, &quot;Bo&quot;]
+seats = [2, 1]
+for name, count in zip(
+        names, seats):
+    print(name, count)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>Mia 2
+Noah 1</pre></div></div></div><p class="prompt">Will Bo appear? Explain before revealing.</p><p class="foot">W6 · Compare the input lengths. Each pair needs one value from each list.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Keep every signup</h2><div class="task-row"><strong>C</strong><div><p>Investigate the missing phone.<br>Build complete numbered records.</p><a href="practice.ipynb">Practice C · 14 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="transform"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Records can become a name list</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>stock = [
+    {&quot;item&quot;: &quot;pens&quot;, &quot;count&quot;: 4},
+    {&quot;item&quot;: &quot;pads&quot;, &quot;count&quot;: 0}]
+ready = [
+    row[&quot;item&quot;] for row in stock
+    if row[&quot;count&quot;] &gt; 0]
+print(ready)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>[&#x27;pens&#x27;]</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W7 · Trace the loop first in teaching.ipynb. The original records stay in stock.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Choose a shape for the report</h2><div class="task-row"><strong>D</strong><div><p>Available book titles in a list.<br>Every title’s count in a dictionary.</p><a href="practice.ipynb">Practice D · 10 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="search"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Search a record’s field</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>items = [{&quot;tag&quot;:&quot;K1&quot;}, {&quot;tag&quot;:&quot;B2&quot;}]
+found_index = -1
+for index, item in enumerate(items):
+    if item[&quot;tag&quot;] == &quot;K1&quot;:
+        found_index = index
+        break
+print(found_index)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>0</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W8 · Search first. After the loop, guard against -1 before pop.</p></section>
+<section id="delete-guard"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A failed search must leave data alone</h2><div class="two-up plain-compare"><div><h3>Missing tag</h3><pre>found_index = -1</pre><p>Calling pop(-1) would remove the last record.</p></div><div><h3>Checked removal</h3><pre>if found_index != -1:
+    items.pop(found_index)</pre><p>Remove only after finding a real match.</p></div></div><p class="foot">The complete worked search/removal is W8. Do not remove records while continuing through the same list.</p></section>
+<section id="contacts"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Contact book with records</h2><div class="task-row"><strong>E</strong><div><p>Show all, find by name, delete by name.<br>A missing name leaves the book unchanged.</p><a href="practice.ipynb">Practice E · 30 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Explain a path and a missing match</h2><p class="big">What does contacts[0]["phone"] select?</p><p class="prompt">Why does a failed search need a check before pop?</p><p>Show one working lookup and one missing-name test in your own program.</p><p class="foot">Save your work. Commit locally and push. Existing homework deadlines stay unchanged.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

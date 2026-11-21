@@ -1,0 +1,2 @@
+# Lesson 10 · Script practice
+Use these files instead of practice.ipynb, not as extra assignments. Each starter has the full brief above the coding area. Work in r.py, then a.py–e.py when the instructor introduces the ID. E edits the working refactor-start.py; e.py is its brief and a scratch area. Run with `python3 filename.py`. Save a working copy. Demo scripts are in ../demo; x1.py is a labelled intentional error. Do not treat an incomplete starter as a finished program.

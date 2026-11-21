@@ -11,3 +11,4 @@ Released class materials only. Start with [the course homepage](https://arturava
 - [Lesson 7](https://arturavagyan2.github.io/bdg-python-course/lessons/07/slides.html)
 - [Lesson 8](https://arturavagyan2.github.io/bdg-python-course/lessons/08/slides.html)
 - [Lesson 9](https://arturavagyan2.github.io/bdg-python-course/lessons/09/slides.html)
+- [Lesson 10](https://arturavagyan2.github.io/bdg-python-course/lessons/10/slides.html)

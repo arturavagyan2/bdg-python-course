@@ -1,0 +1,71 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 10 · Functions &amp; Clear Responsibilities</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"><style>.coding-deck .editor pre{white-space:pre}.coding-deck #nested-keys .code-pair{display:block}.coding-deck #nested-keys .fragment{display:block;max-width:230px;margin-top:16px}.coding-deck .path-expression{font:35px/1.4 BDGCode;margin:32px 0 20px}.path-expression span{border-bottom:3px solid var(--ink);margin-left:8px;padding-bottom:5px}.coding-deck .path-lines p,.coding-deck .responsibility-lines p{display:grid;grid-template-columns:430px 1fr;gap:25px;border-bottom:1px solid var(--line);padding:13px 0;margin:0;font-size:24px}.path-lines span,.responsibility-lines span{font-size:22px;color:var(--muted)}.coding-deck .responsibility-lines{margin-top:34px}.coding-deck .plain-compare{margin-top:30px}.coding-deck .plain-compare pre{font-size:21px;line-height:1.45;padding:14px;margin:12px 0 18px}.coding-deck .plain-compare p{font-size:23px}.coding-deck .code-pair + .prompt{font-size:22px;margin-top:18px}</style></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="functions"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Functions and clear responsibilities</h2><p>Give a useful calculation a name. Reuse it with different values.</p><div class="cover-code"><div class="window editor"><div class="bar">Today’s data</div><pre>def ticket_cost(count, price):
+    return count * price</pre></div></div><p class="foot">R · 8 minutes. Retrieve nested record access.</p></section>
+<section id="definition"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A definition waits for a call</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def show_ready():
+    print(&quot;Ready&quot;)
+
+print(&quot;Definition saved&quot;)
+show_ready()</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>Definition saved
+Ready</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W1 · The indented body runs at the call, not at the definition.</p></section>
+<section id="parameters"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Values go in, a result comes back</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def ticket_cost(count, unit_price):
+    return count * unit_price
+
+cost = ticket_cost(3, 4)
+print(cost)
+print(ticket_cost(2, 4) + 1)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>12
+9</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W2 · count and unit_price are parameters. 3 and 4 are arguments.</p></section>
+<section id="missing-argument"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Every required argument needs a value</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def ticket_cost(count, unit_price):
+    return count * unit_price
+
+print(ticket_cost(3))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>TypeError</pre></div></div></div><p class="prompt">Which input is missing from the call?</p><p class="foot">X1 · A deliberately incomplete call. Which required input is missing?</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>One delivery rule, several calls</h2><div class="task-row"><strong>A</strong><div><p>Repair the returned calculation.<br>Reuse it for two deliveries and a fee.</p><a href="practice.ipynb">Practice A · 15 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="print-result"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>What value does the caller receive?</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def show_cost(count, price):
+    print(count * price)
+
+result = show_cost(3, 4)
+print(&quot;Saved:&quot;, result)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>12
+Saved: None</pre></div></div></div><p class="prompt">Does result contain the number that was printed?</p><p class="foot">W3 · Trace the inner print and the caller’s print separately.</p></section>
+<section id="return-result"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A returned number can be reused</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def calculate_cost(count, price):
+    return count * price
+
+result = calculate_cost(3, 4)
+print(&quot;Saved:&quot;, result)
+print(&quot;With fee:&quot;, result + 2)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>Saved: 12
+With fee: 14</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W3b · Calculation and display now have separate jobs.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Repair a result that disappears</h2><div class="task-row"><strong>B</strong><div><p>Return the room’s area.<br>Let the caller add an allowance.</p><a href="practice.ipynb">Practice B · 14 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="early-return"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>return ends the current call</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def entry_message(age):
+    if age &lt; 12:
+        return &quot;Come back later&quot;
+    return &quot;Welcome&quot;
+
+print(entry_message(11))
+print(entry_message(12))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>Come back later
+Welcome</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W4 · Only the chosen path runs. Return ends this call, not the whole script.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="loop-return"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Return after checking every item</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def count_short_words(words):
+    count = 0
+    for word in words:
+        if len(word) &lt;= 3:
+            count += 1
+    return count
+words = [&quot;map&quot;, &quot;ticket&quot;, &quot;bus&quot;]
+print(count_short_words(words))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>2</pre></div></div></div><p class="foot">W5 · Compare return’s indentation with for. Also check an empty list.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Count products, not units</h2><div class="task-row"><strong>C</strong><div><p>Return how many products are available.<br>Check zero stock and an empty dictionary.</p><a href="practice.ipynb">Practice C · 14 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="lookup"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A match can return immediately</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def find_room(rooms, target):
+    for room in rooms:
+        if room[&quot;name&quot;] == target:
+            return room
+    return None
+rooms = [{&quot;name&quot;:&quot;Studio&quot;,&quot;seats&quot;:8}]
+print(find_room(rooms, &quot;Hall&quot;))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">Output after Run</div><pre>None</pre></div></div></div><p class="prompt">Predict the output before the reveal.</p><p class="foot">W6 · return None belongs after the loop. One mismatch does not prove absence.</p></section>
+<section id="none-check"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A missing result has its own check</h2><div class="two-up plain-compare"><div><h3>Inside the lookup</h3><pre>return room
+# or, after no match:
+return None</pre></div><div><h3>At the caller</h3><pre>if room is None:
+    print(&quot;Not found&quot;)
+else:
+    print(room[&quot;seats&quot;])</pre></div></div><p class="prompt">A price of 0 can be valid. How can a caller distinguish it from no match?</p><p class="foot">W6 · is None checks for the special no-result value.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Find a price or report no result</h2><div class="task-row"><strong>D</strong><div><p>Return a price from matching records.<br>Keep the missing message at the caller.</p><a href="practice.ipynb">Practice D · 10 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="responsibilities"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A function’s name states its job</h2><div class="responsibility-lines"><p><code>show_order(order)</code><span>Display the order</span></p><p><code>order_total(order)</code><span>Return a number</span></p><p><code>find_item(order, target)</code><span>Return a record or None</span></p></div><p class="prompt">Which function can another program reuse without the menu?</p><p class="foot">W7 · Refactoring reorganizes working code while preserving its behavior. DRY: keep a repeated rule in one place.</p></section>
+<section id="refactor"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Refactor a working order checker</h2><div class="task-row"><strong>E</strong><div><p>Run the supplied program.<br>Extract functions and keep every menu behavior.</p><a href="practice.ipynb">Practice E · 30 minutes</a></div></div><p class="foot">Full instructions, starter and checks are beside your coding cell.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Demonstrate reuse without the menu</h2><p class="big">Call your total function with a different order.</p><p class="prompt">Does it return a number without asking for input or printing?</p><p>Explain one parameter, one argument and where the returned value goes.</p><p class="foot">Save and push your own work. Default arguments, scope and lambda come later.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

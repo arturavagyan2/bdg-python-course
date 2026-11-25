@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 11 · Function Arguments, Scope &amp; Functions as Values</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"><style>.coding-deck .editor pre{white-space:pre}.coding-deck .wide-code pre{font-size:23px;line-height:1.4;white-space:pre}.coding-deck .code-pair{grid-template-columns:520px 280px}.coding-deck .binding{margin-top:28px}.binding p{display:grid;grid-template-columns:320px 1fr;gap:25px;border-bottom:1px solid var(--line);padding:14px 0;margin:0;font-size:26px}.binding span{color:var(--muted);font-size:23px}.coding-deck .files{display:grid;grid-template-columns:350px 1fr;gap:30px;margin-top:24px;align-items:start}.coding-deck .files pre{font-size:22px;line-height:1.45;white-space:pre;margin:0}.coding-deck .files p{font-size:23px}.coding-deck .import-line{font:23px/1.6 BDGCode;padding:17px 0;border-bottom:1px solid var(--line)}.coding-deck .scope-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:25px}.coding-deck .scope-compare pre{font-size:20px;line-height:1.45;margin:0;padding:14px;white-space:pre}.coding-deck .scope-compare h3{font-size:23px;margin:0 0 12px}.coding-deck .action{font:25px/1.6 BDGCode;margin-top:24px}.coding-deck .answer-line{font:28px/1.5 BDGCode;margin-top:22px;border-left:4px solid var(--ink);padding-left:18px}.coding-deck .prompt{font-size:24px}.coding-deck .code-pair + .prompt{font-size:22px;margin-top:16px}.coding-deck .foot{font-size:17px}.coding-deck .wide-code{margin-top:22px}.coding-deck .scope-line{font-size:27px;border-bottom:1px solid var(--line);padding:15px 0}.coding-deck .scope-line strong{display:inline-block;min-width:290px}.coding-deck .package-name{font-size:24px;font-family:BDGCode}</style></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="arguments"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Function arguments and scope</h2><p>The same function can serve different callers.</p><div class="cover-code"><div class="window editor"><div class="bar">A call can name its choices</div><pre>booking_cost(2, fee=0)</pre></div></div><p class="foot">R · 8 minutes. Reuse a returned calculation.</p></section>
+<section id="defaults"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A supplied argument replaces a default</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def booking_cost(people, price=3,
+                 fee=1):
+    return people * price + fee
+
+print(booking_cost(2))
+print(booking_cost(2, fee=0))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>7
+6</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W1 · Defaults fill omitted arguments. A supplied zero is still a value.</p></section>
+<section id="keyword-binding"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A keyword names the receiving parameter</h2><div class="wide-code"><div class="window editor"><div class="bar">Same definition, explicit choices</div><pre>booking_cost(fee=0, people=2, price=4)</pre></div></div><div class="binding"><p><code>people = 2</code><span>The name chooses the parameter</span></p><p><code>price = 4</code><span>This call replaces the default 3</span></p><p><code>fee = 0</code><span>This call replaces the default 1</span></p></div><p class="foot">W1 · Positional arguments come before keyword arguments.</p></section>
+<section id="keyword-error"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The keyword must match a parameter</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def booking_cost(people, price=3):
+    return people * price
+
+print(booking_cost(2, cost=4))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>TypeError</pre></div></div></div><p class="prompt">Which name does this definition reject?</p><p class="foot">X1 · Compare the keyword with the names in the definition before the reveal.</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Delivery choices at the call</h2><div class="task-row"><strong>A</strong><div><p>Use defaults for usual charges.<br>Override a choice by name.</p><a href="practice.ipynb">Practice A · 15 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="args"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Extra positional arguments form a tuple</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def minutes(*parts):
+    total = 0
+    for part in parts:
+        total += part
+    return total
+print(minutes(10, 5))
+print(minutes())</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>15
+0</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W2 · parts is a tuple. No supplied values means an empty tuple.</p></section>
+<section id="kwargs"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Extra named arguments form a dictionary</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def badge(name, **details):
+    return details
+
+info = badge(&quot;Mina&quot;, role=&quot;host&quot;)
+print(info[&quot;role&quot;])
+print(badge(&quot;Bo&quot;))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>host
+{}</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W3 · details is a dictionary. The keyword names become its keys.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A receipt with optional details</h2><div class="task-row"><strong>B</strong><div><p>Collect several prices.<br>Keep named receipt details together.</p><a href="practice.ipynb">Practice B · 14 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="local"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Local assignment and the caller</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>balance = 20
+def spend(balance, amount):
+    balance = balance - amount
+    return balance
+
+print(spend(balance, 3))
+print(balance)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>17
+20</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W4 · The caller decides whether to save the returned balance.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="global"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A global update affects the next call</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>visits = 0
+def record_visit():
+    global visits
+    visits += 1
+    return visits
+print(record_visit())
+print(record_visit())</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>1
+2</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W5 · The second call starts with state left by the first.</p></section>
+<section id="explicit-state"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The caller can own the changing value</h2><div class="scope-compare"><div><h3>Shared update</h3><pre>def record_visit():
+    global visits
+    visits += 1
+    return visits</pre></div><div><h3>Explicit input and result</h3><pre>def next_visit(visits):
+    return visits + 1
+
+visits = next_visit(visits)</pre></div></div><p class="prompt">Which version can calculate an independent counter?</p><p class="foot">W5 · Pass state into a calculation and save the returned result at the caller.</p></section>
+<section id="local-error"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A local name outside its call</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def delivery_cost(distance):
+    fee = 2
+    return distance + fee
+
+print(delivery_cost(3))
+print(fee)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>5
+NameError</pre></div></div></div><p class="prompt">Which line succeeds before the error?</p><p class="foot">X2 · fee is local. The returned result is available to the caller.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A wallet with explicit state</h2><div class="task-row"><strong>C</strong><div><p>Accept the current balance.<br>Return a result the caller can save.</p><a href="practice.ipynb">Practice C · 14 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="function-value"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A function name can travel as a value</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def double(value):
+    return value * 2
+
+def apply(value, operation):
+    return operation(value)
+
+print(apply(4, double))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>8</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W6 · double passes the function. double(4) would call it immediately.</p></section>
+<section id="lambda"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A lambda supplies one small expression</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>def apply(value, operation):
+    return operation(value)
+
+print(apply(4, lambda x: x + 3))
+print(apply(4, lambda x: x * 2))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>7
+8</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W7 · Use def when a rule needs several steps or a meaningful reusable name.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A caller chooses the pricing rule</h2><div class="task-row"><strong>D</strong><div><p>Pass a named function.<br>Then try a small lambda.</p><a href="practice.ipynb">Practice D · 10 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="utility"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A utility file holds reusable functions</h2><div class="files"><pre>event_tools.py
+
+  group_cost(...)
+  combine_costs(...)
+  quote_record(...)
+  apply_adjustment(...)</pre><div><p>Definitions receive values and return results.</p><p>Calling code builds one quote and chooses what to print.</p><p>Imports come in lesson 12.</p></div></div><p class="foot">E preview · Keep sample data outside function definitions.</p></section>
+<section id="activity-e"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>One event quote from small tools</h2><div class="task-row"><strong>E</strong><div><p>Build and check the utility functions.<br>Use them together for a quote.</p><a href="practice.ipynb">Practice E · 30 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A second caller checks reuse</h2><p class="big">Try different data without editing a definition.</p><p>Explain a default, an extra keyword and the returned result.</p><p class="prompt">Which function can you reuse without inheriting hidden state?</p><p class="foot">Commit and push your work. Existing homework and deadlines stay unchanged.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>

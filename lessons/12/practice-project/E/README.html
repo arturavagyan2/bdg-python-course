@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E · Split the workshop desk into a package · 30 min · BDG</title><link rel="stylesheet" href="../../../../assets/site.css">
+</head><body><main><header><a href="../../../../index.html">BDG · Python &amp; AI</a></header>
+<article><h2 id="e-split-the-workshop-desk-into-a-package-30-min">E · Split the workshop desk into a package · 30 min</h2>
+<p><strong>Goal:</strong> Refactor a working project into related modules and preserve its behavior.</p>
+<p>Use real files in your copy of <code>practice-project/E/</code>. Run the working main.py and try Show, Total, an unknown choice and Exit before editing.</p>
+<p>Move line_cost and order_total into <code>workshop/costs.py</code>. Move show_order into <code>workshop/display.py</code>, importing the shared line_cost there. Keep <code>workshop/__init__.py</code> empty or comment-only. In main.py, import the needed functions, put the menu and its data inside <code>main()</code>, and use a main guard to start it only when run directly. Pass data through parameters.</p>
+<p><strong>Check:</strong> <code>python3 main.py</code> still shows <code>soup 2 6</code> and <code>bread 1 2</code>; Total prints 8; an unknown choice says <code>Unknown choice</code>; 0 exits. Importing main or the package modules must not start the menu. With an empty order, Show says <code>No items</code> and total is 0. Keep calculation, display and menu responsibilities separate.</p>
+<p>Work in steps: costs module (8 min), display/imports (8), guarded main and comparison checks (8), Git (6). Run from the E folder. Then, from your own repository root, inspect and submit the refactoring:</p>
+<pre><code class="language-bash">git status
+git add classwork/lesson-12
+git diff --cached
+git commit -m &quot;Split workshop desk into modules&quot;
+git push
+</code></pre>
+<p>Use that staging path only if this copy is at classwork/lesson-12; otherwise use your actual classwork path. Submit the exact commit link. Do not upload files through GitHub’s website. If authentication is blocked, keep the local commit and get help with the push.</p>
+<p><strong>Extra (optional):</strong> Import order_total from a separate check.py and calculate a different one-item order.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

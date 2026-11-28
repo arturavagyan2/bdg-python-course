@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C · Protect startup code with a main guard · 14 min · BDG</title><link rel="stylesheet" href="../../../../assets/site.css">
+</head><body><main><header><a href="../../../../index.html">BDG · Python &amp; AI</a></header>
+<article><h2 id="c-protect-startup-code-with-a-main-guard-14-min">C · Protect startup code with a main guard · 14 min</h2>
+<p><strong>Goal:</strong> Keep a module reusable without starting its demonstration on import.</p>
+<p>Use real files in <code>practice-project/C/</code>. Run <code>python3 main.py</code>, then <code>python3 preview.py</code>. Predict why preview currently prints two messages.</p>
+<p>Keep <code>build_message(label)</code> reusable. Move the desk demonstration into <code>run_demo()</code> and call it only under <code>if __name__ == &quot;__main__&quot;:</code>. Keep preview.py’s explicit call unchanged.</p>
+<p><strong>Check:</strong> Running main.py prints <code>Ready: desk</code>. Running preview.py prints only <code>Ready: preview</code>. Importing main defines its functions without printing anything or asking for input. The file is named main.py, while its direct-execution name is the special string <strong>main</strong>.</p>
+<p><strong>Extra (optional):</strong> Make a third small caller that imports build_message and prints a message for &quot;check&quot;.</p>
+</article><footer>Keep a copy of downloaded practice files before editing them.</footer>
+</main></body></html>

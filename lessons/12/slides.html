@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 12 · Modules, Packages &amp; the Standard Library</title><link rel="stylesheet" href="../../vendor/reveal/dist/reveal.css"><link rel="stylesheet" href="../../assets/branding.css"><link rel="stylesheet" href="../../assets/theme.css"><link rel="stylesheet" href="../../assets/classroom.css"><link rel="stylesheet" href="../../assets/coding.css"><style>.coding-deck .editor pre{white-space:pre}.coding-deck .wide-code pre{font-size:23px;line-height:1.4;white-space:pre}.coding-deck .code-pair{grid-template-columns:520px 280px}.coding-deck .binding{margin-top:28px}.binding p{display:grid;grid-template-columns:320px 1fr;gap:25px;border-bottom:1px solid var(--line);padding:14px 0;margin:0;font-size:26px}.binding span{color:var(--muted);font-size:23px}.coding-deck .files{display:grid;grid-template-columns:350px 1fr;gap:30px;margin-top:24px;align-items:start}.coding-deck .files pre{font-size:22px;line-height:1.45;white-space:pre;margin:0}.coding-deck .files p{font-size:23px}.coding-deck .import-line{font:23px/1.6 BDGCode;padding:17px 0;border-bottom:1px solid var(--line)}.coding-deck .scope-compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:25px}.coding-deck .scope-compare pre{font-size:20px;line-height:1.45;margin:0;padding:14px;white-space:pre}.coding-deck .scope-compare h3{font-size:23px;margin:0 0 12px}.coding-deck .action{font:25px/1.6 BDGCode;margin-top:24px}.coding-deck .answer-line{font:28px/1.5 BDGCode;margin-top:22px;border-left:4px solid var(--ink);padding-left:18px}.coding-deck .prompt{font-size:24px}.coding-deck .code-pair + .prompt{font-size:22px;margin-top:16px}.coding-deck .foot{font-size:17px}.coding-deck .wide-code{margin-top:22px}.coding-deck .scope-line{font-size:27px;border-bottom:1px solid var(--line);padding:15px 0}.coding-deck .scope-line strong{display:inline-block;min-width:290px}.coding-deck .package-name{font-size:24px;font-family:BDGCode}#missing-module .terminal pre{font-size:20px}</style></head><body><div class="reveal teaching-deck coding-deck"><div class="slides">
+<section id="modules"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Modules, packages and the standard library</h2><p>A useful function can live in a file other programs import.</p><div class="cover-code"><div class="window editor"><div class="bar">An existing Python tool</div><pre>import math
+print(math.ceil(9 / 2))</pre></div></div><p class="foot">R · 8 minutes. Recall a default and a named argument.</p></section>
+<section id="math"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The last partly filled box still counts</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>import math
+from math import sqrt
+
+print(math.ceil(9 / 2))
+print(sqrt(81))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>5
+9.0</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W1 · import math gives a module name. from math import sqrt gives a function name.</p></section>
+<section id="missing-module"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Python needs a module it can find</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>import bdg_missing_example</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>ModuleNotFoundError</pre></div></div></div><p class="prompt">What does Python try to find here?</p><p class="foot">X1 · Check the module name and project location. Standard library modules need no pip install.</p></section>
+<section id="activity-a"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Separate boxes or shared boxes?</h2><div class="task-row"><strong>A</strong><div><p>Round up for a partial box.<br>Compare two packing plans.</p><a href="practice.ipynb">Practice A · 15 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="custom-module"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A module is a Python file</h2><div class="scope-compare"><div><h3>greeting_tools.py</h3><pre>def greeting(name):
+    return "Hello, " + name</pre></div><div><h3>main.py</h3><pre>import greeting_tools
+
+print(
+  greeting_tools.greeting("Mina")
+)</pre></div></div><p class="action">Terminal: python3 main.py</p><p class="fragment answer-line">Hello, Mina</p><p class="foot">W2 · Both files are in demo/imports. Save them before running.</p></section>
+<section id="import-names"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Names available after import</h2><div class="wide-code"><div class="window editor"><div class="bar">Two import styles</div><pre># Module name
+import greeting_tools
+greeting_tools.greeting("Bo")
+
+from greeting_tools import greeting
+greeting("Bo")</pre></div></div><p class="prompt">Which caller uses the module prefix?</p><p class="foot">W2 · The function still has one definition in greeting_tools.py.</p></section>
+<section id="activity-b"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Move the calculation into a module</h2><div class="task-row"><strong>B</strong><div><p>Keep one function definition.<br>Run two callers from saved files.</p><a href="practice.ipynb">Practice B · 14 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="main-guard"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>The main guard controls startup</h2><div class="wide-code"><div class="window editor"><div class="bar">message_tools.py</div><pre>def greeting(name):
+    return "Hello, " + name
+
+def main():
+    print(greeting("Mina"))
+
+if __name__ == "__main__":
+    main()</pre></div></div><p class="foot">W3 · Definitions remain available on import. The guarded call runs only for direct execution.</p></section>
+<section id="break"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Break</h2><div class="break-layout"><div class="break-number">10</div><div class="break-unit">minutes</div></div><p class="foot">Save your work. Return at lesson minute 70.</p></section>
+<section id="run-or-import"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Direct execution and import</h2><div class="scope-compare"><div><h3>Run this file directly</h3><pre>python3 message_tools.py
+
+# Inside that file:
+__name__ == "__main__"</pre></div><div><h3>Import from preview.py</h3><pre>import message_tools
+
+# Inside that module:
+__name__ == "message_tools"</pre></div></div><div class="fragment"><p class="answer-line">Direct run: Hello, Mina<br>Import alone: no greeting</p></div><p class="foot">W3 · Use the real files in demo/guard. A notebook cannot show both entry paths by itself.</p></section>
+<section id="activity-c"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Keep importing free of startup output</h2><div class="task-row"><strong>C</strong><div><p>Preserve direct execution.<br>Stop the demo from running on import.</p><a href="practice.ipynb">Practice C · 14 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="dates"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A time span handles the month boundary</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>from datetime import date, timedelta
+
+start = date(2026, 11, 28)
+print(start + timedelta(days=7))</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>2026-12-05</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W5 · date is a calendar date. timedelta is an amount of time.</p></section>
+<section id="random"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Random choice uses the supplied options</h2><div class="wide-code"><div class="window editor"><div class="bar">Example.py</div><pre>import random
+names = ["Mina", "Bo", "Nora"]
+helper = random.choice(names)
+print(helper)</pre></div></div><p class="prompt">What can we check without requiring one particular name?</p><p class="fragment answer-line">The result belongs to names.</p><p class="foot">W5 · Keep the choice list non-empty, or handle an empty list before calling choice.</p></section>
+<section id="paths"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A path describes a location</h2><div class="code-pair"><div class="window editor"><div class="bar">Example.py</div><pre>import os
+from pathlib import Path
+
+folder = Path(os.getcwd())
+print(folder == Path.cwd())
+print((folder / &quot;notes.txt&quot;).name)
+print(Path(&quot;lesson.py&quot;).suffix)</pre></div><div class="fragment"><div class="window terminal"><div class="bar">After Run</div><pre>True
+notes.txt
+.py</pre></div></div></div><p class="prompt">What will appear after Run?</p><p class="foot">W6 · Joining and inspecting a path does not create or open a file.</p></section>
+<section id="activity-d"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A session card from standard tools</h2><div class="task-row"><strong>D</strong><div><p>Choose a helper and a follow-up date.<br>Describe the current working folder.</p><a href="practice.ipynb">Practice D · 10 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="package"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A package groups related modules</h2><div class="files"><pre>main.py
+desk_tools/
+  __init__.py
+  labels.py
+  prices.py</pre><div><p>desk_tools.labels identifies the module inside the package.</p><p>desk_tools is the package folder.</p><p>labels.py owns the badge function.</p><p>Keep __init__.py empty for now.</p></div></div><p class="foot">W4 · Import in main.py: from desk_tools.labels import badge.</p></section>
+<section id="responsibilities"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>Each file has a clear dependency</h2><div class="binding"><p><code>workshop/costs.py</code><span>Returns calculated costs</span></p><p><code>workshop/display.py</code><span>Imports the shared calculation</span></p><p><code>main.py</code><span>Owns the menu and startup guard</span></p></div><p class="prompt">Which module could another program reuse without starting a menu?</p><p class="foot">E preview · Follow the file paths and complete instructions in Practice E.</p></section>
+<section id="activity-e"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A working project becomes a package</h2><div class="task-row"><strong>E</strong><div><p>Move functions into their modules.<br>Keep the behavior, then commit and push.</p><a href="practice.ipynb">Practice E · 30 minutes</a></div></div><p class="foot">Use the matching ID in your assigned notebook. Full instructions are beside your code.</p></section>
+<section id="git"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A saved file, a commit and a push are separate steps</h2><div class="wide-code"><div class="window terminal"><div class="bar">From your own repository root</div><pre>git status
+git add classwork/lesson-12
+git diff --cached
+git commit -m "Split into modules"
+git push</pre></div></div><p class="foot">Use your actual classwork path. If authentication fails, keep the local commit and get help.</p></section>
+<section id="exit"><img class="lesson-strip" src="../../assets/bdg-brand-strip.png" alt=""><h2>A clean import checks the separation</h2><p class="big">Import a utility and use it with different data.</p><p>Explain which file runs first and why the menu stays closed.</p><p class="prompt">Can another caller reuse your calculation without starting your app?</p><p class="foot">Submit your exact pushed commit link. No new homework or package installation is required.</p></section>
+</div></div><script src="../../vendor/reveal/dist/reveal.js"></script><script src="../../vendor/reveal/dist/plugin/notes.js"></script><script src="../../assets/deck.js"></script></body></html>
